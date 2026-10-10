@@ -22,11 +22,13 @@ describe('Tab1Page', () => {
       id: 'first',
       name: 'První',
       value: 1,
+      createdAt: ''
     };
     const second: SavedCounter = {
       id: 'second',
       name: 'Druhé',
       value: 2,
+      createdAt: ''
     };
 
     component.onSaved(first);
