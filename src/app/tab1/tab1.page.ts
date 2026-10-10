@@ -1,60 +1,39 @@
-import { Component, EnvironmentInjector, inject } from '@angular/core';
-import { IonIcon, IonLabel, IonTabBar, IonTabButton, IonTabs, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonInput } from '@ionic/angular';
-import { addIcons } from 'ionicons';
+import { Component } from '@angular/core';
 import {
-  calculatorOutline,
-  informationCircleOutline,
-  timeOutline,
-} from 'ionicons/icons';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
-
-
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonNote,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular';
+import { CounterComponent } from '../components/counter/counter.component';
+import { SavedCounter } from '../models/saved-counter';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
   imports: [
-    IonTabs,
-    IonTabBar,
-    IonTabButton,
-    IonIcon,
-    IonLabel,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
+    CounterComponent,
     IonContent,
-    ExploreContainerComponent,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonButton,
-    IonInput
-],
-
-
+    IonHeader,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonListHeader,
+    IonNote,
+    IonTitle,
+    IonToolbar,
+  ],
 })
 export class Tab1Page {
-  counterName = 'Moje Počitadlo';
-  count = 0;
+  savedCounters: SavedCounter[] = [];
 
-  Increment() {
-    this.count++;
-  }
-
-  Decrement() {
-    this.count--;
-    if (this.count < 0) {
-      this.count = 0;
-    }
-  }
-
-  Reset() {
-    this.count = 0;
-  }
-
-  ChangeCounterName(event: any) {
-    this.counterName = event.target.value;
+  onSaved(counter: SavedCounter): void {
+    this.savedCounters.unshift(counter);
   }
 }

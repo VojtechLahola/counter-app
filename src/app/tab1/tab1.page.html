@@ -1,32 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Counter App
-    </ion-title>
+    <ion-title>CounterApp</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title valid>{{ counterName }}</ion-card-title>
-    </ion-card-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <app-counter
+    heading="Nové počítadlo"
+    (saved)="onSaved($event)"
+  ></app-counter>
 
-    <ion-card-content>
-      <ion-input 
-      type="string" 
-      (ionChange)="ChangeCounterName($event)" 
-      placeholder="Counter name"
-      label="Název počítadla"
-      label-placement="stacked"
-      fill="outline">   
-      </ion-input>
-      <h1 class="counter-value">{{ count }}</h1>
-      <div class="counter-actions">
-        <ion-button (click)="Increment()" color="success">+1</ion-button>
-        <ion-button (click)="Decrement()" color="danger">-1</ion-button>
-        <ion-button (click)="Reset()" color="medium" fill="outline" [disabled]="count === 0">Reset</ion-button>
-      </div>
-    </ion-card-content>
-  </ion-card>
+  @if (savedCounters.length > 0) {
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Uložená počítadla</ion-label>
+      </ion-list-header>
+
+      @for (counter of savedCounters; track counter.id) {
+        <ion-item>
+          <ion-label>
+            <h2>{{ counter.name }}</h2>
+            <p>{{ counter.id }}</p>
+          </ion-label>
+          <ion-note slot="end">{{ counter.value }}</ion-note>
+        </ion-item>
+      }
+    </ion-list>
+  } @else {
+    <p class="empty-state">
+      Zatím nebylo uloženo žádné počítadlo.
+    </p>
+  }
 </ion-content>
