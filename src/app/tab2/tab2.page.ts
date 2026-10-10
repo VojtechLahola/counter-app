@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import {
   IonButton,
   IonContent,
@@ -20,6 +20,7 @@ import { CounterService } from '../services/counter.service';
   styleUrls: ['tab2.page.scss'],
   imports: [
     DatePipe,
+    DecimalPipe,
     IonButton,
     IonContent,
     IonHeader,

@@ -95,6 +95,14 @@ describe('CounterService', () => {
     });
   });
 
+  it('variant A: should calculate the average saved value', async () => {
+    await service.initialize();
+    await service.add(first);
+    await service.add(second);
+
+    expect(service.averageValue()).toBe(1.5);
+  });
+
   it('scenario 3: should remove only the selected counter', async () => {
     await service.initialize();
     await service.add(first);
