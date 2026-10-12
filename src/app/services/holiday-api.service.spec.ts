@@ -1,0 +1,16 @@
+import { TestBed } from '@angular/core/testing';
+import { HolidayApiService } from './holiday-api.service';
+import { beforeEach, describe, expect, it } from 'vitest';
+
+describe('HolidayApiService', () => {
+  let service: HolidayApiService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(HolidayApiService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
